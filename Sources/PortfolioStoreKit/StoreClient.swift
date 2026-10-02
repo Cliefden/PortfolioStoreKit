@@ -81,6 +81,14 @@ public final class StoreClient {
     /// snapshot. `verify: false` would skip the backend round-trip (unused today).
     private func process(_ result: VerificationResult<Transaction>, verify: Bool) async {
         guard case .verified(let txn) = result else { return }
+        // Revoked (refund / chargeback / family-sharing removal): consume it and never
+        // route to the verifier. A backend "not entitled" reply would otherwise read as
+        // `.deferFinish` and Apple would redeliver the revoked transaction forever.
+        if txn.revocationDate != nil {
+            await txn.finish()
+            await recomputeSnapshot()
+            return
+        }
         let decision = verify ? await verifier.verify(txn, jws: result.jwsRepresentation) : .grant
         switch decision {
         case .grant, .reject:
