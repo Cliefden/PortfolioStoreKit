@@ -163,7 +163,7 @@ Tagged releases; apps depend on it by URL + version (CI-safe — resolvable in X
 
 ## Changelog
 
-### 0.2.0 (unreleased)
+### 0.2.0 (2026-10-27)
 - **App-managed trial:** `Trial`, `TrialState`, `TrialClock`, `TrialPersistence`,
   `KeychainTrialStore` (earliest-wins, survives reinstall, optional `UserDefaults` mirror, reads
   Lunker/Sextant and Equinox formats), `UserDefaultsTrialStore`, `TrialPersistenceError`.
