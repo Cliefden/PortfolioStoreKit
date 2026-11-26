@@ -163,6 +163,11 @@ Tagged releases; apps depend on it by URL + version (CI-safe — resolvable in X
 
 ## Changelog
 
+### 0.2.1 (2026-11-26)
+- **Privacy manifest:** the package now ships `PrivacyInfo.xcprivacy` declaring its
+  `UserDefaults` use (`CA92.1`, `1C8F.1`). No tracking, no collected data. Apps no longer
+  need their own `UserDefaults` entry just for this package.
+
 ### 0.2.0 (2026-10-27)
 - **App-managed trial:** `Trial`, `TrialState`, `TrialClock`, `TrialPersistence`,
   `KeychainTrialStore` (earliest-wins, survives reinstall, optional `UserDefaults` mirror, reads
