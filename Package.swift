@@ -18,7 +18,10 @@ let package = Package(
         .library(name: "PortfolioStoreKit", targets: ["PortfolioStoreKit"]),
     ],
     targets: [
-        .target(name: "PortfolioStoreKit"),
+        .target(
+            name: "PortfolioStoreKit",
+            resources: [.copy("PrivacyInfo.xcprivacy")]
+        ),
         .testTarget(name: "PortfolioStoreKitTests", dependencies: ["PortfolioStoreKit"]),
     ]
 )
